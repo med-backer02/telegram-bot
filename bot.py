@@ -11,7 +11,7 @@ def cmd_start(message):
         bot.send_message(message.chat.id,"Кажется, кто-то обещал отправить своё имя, но так и не сделал этого :( Жду...")
     elif state==config.States.S_ENTER_AGE.value:
         bot.send_message(message.chat.id,"Кажется, кто-то обещал отправить свой возраст, но так и не сделал этого :( Жду...")
-    elif state==config.States.S_ENTER_PIC.value:
+    elif state==config.States.S_SEND_PIC.value:
         bot.send_message(message.chat.id,"Кажется, кто-то обещал отправить картинку, но так и не сделал этого :( Жду...")
     else:
         bot.send_message(message.chat.id, "Привет! Как я могу к тебе обращаться?")
