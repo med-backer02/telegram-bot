@@ -1,13 +1,14 @@
 import psycopg2
 from psycopg2.errorcodes import UNIQUE_VIOLATION
 import app.config as config
-from app.utils.question_and_tests import Question
 
 class Psycho:
 
     def __init__(self):
-        self.connection = psycopg2.connect(dbname=config.dbname, user=config.user,
-                               password=config.password, host=config.host)
+        # self.connection = psycopg2.connect(dbname=config.dbname, user=config.user,
+        #                        password=config.password, host=config.host)
+        self.connection = psycopg2.connect(config.DB_URL, sslmode="require")
+
         self.cursor = self.connection.cursor()
 
     def create_bd_for_tests(self):
@@ -54,11 +55,6 @@ class Psycho:
         test_id = self.cursor.fetchone()
         return test_id
 
-    def get_tests_id_and_name_from_bd(self):
-        self.cursor.execute("SELECT id,name FROM Tests")
-        tests_id_and_name = self.cursor.fetchall()
-        return tests_id_and_name
-
 
     def filling_in_questions_bd(self, questions):
         """
@@ -71,31 +67,22 @@ class Psycho:
                                 (question.test_id, question.q_id, question.text, question.answers, question.correct))
         self.connection.commit()
 
-    def get_question_from_bd(self,test_id, offset=0, limit=5):
-        self.cursor.execute("SELECT t_id, q_number, question, q_options, q_answer FROM Questions "
-                            "WHERE t_id = %s"
-                            "ORDER BY random()"
-                            "OFFSET %s"
-                            "LIMIT %s",(test_id, offset, limit))
-        questions = self.cursor.fetchall()
-        return questions
+    def get_id_and_name_from_bd(self):
+        self.cursor.execute("SELECT id,name FROM Tests")
+        tests_id_and_name = self.cursor.fetchall()
+        return tests_id_and_name
 
     def close(self):
         """ Закрываем текущее соединение с БД """
-        #self.cursor.close()
+        self.cursor.close()
         self.connection.close()
 
 if __name__=="__main__":
     database = Psycho()
 
 
-    question_db = database.get_question_from_bd(1)
-    questions_response=[]
-    for q in question_db:
-        t_id, q_number, question, q_options, q_answer = q
-        q_class=Question(t_id, q_number, question, q_options, q_answer)
-        questions_response.append(q_class)
+    print(database.get_id_and_name_from_bd())
 
-    print(questions_response)
+
     database.close()
 
