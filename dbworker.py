@@ -1,6 +1,6 @@
 import psycopg2
 from psycopg2.errorcodes import UNIQUE_VIOLATION
-import app.config
+import app.config as config
 
 class Psycho:
 
