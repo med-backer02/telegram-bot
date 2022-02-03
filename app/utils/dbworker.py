@@ -6,8 +6,10 @@ from app.utils.question_and_tests import Question
 class Psycho:
 
     def __init__(self):
-        self.connection = psycopg2.connect(dbname=config.dbname, user=config.user,
-                               password=config.password, host=config.host)
+        # self.connection = psycopg2.connect(dbname=config.dbname, user=config.user,
+        #                        password=config.password, host=config.host)
+        self.connection = psycopg2.connect(config.DB_URL, sslmode="require")
+
         self.cursor = self.connection.cursor()
 
     def create_bd_for_tests(self):
