@@ -7,7 +7,7 @@ class Psycho:
     def __init__(self):
         # self.connection = psycopg2.connect(dbname=config.dbname, user=config.user,
         #                        password=config.password, host=config.host)
-        self.connection = psycopg2.connect(config.DB_URI, sslmode="require")
+        self.connection = psycopg2.connect(config.DB_URL)
 
         self.cursor = self.connection.cursor()
 
