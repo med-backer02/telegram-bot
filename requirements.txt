@@ -1,2 +1,2 @@
-pyTelegramBotAPI==4.2.2
-vedis==0.7.1
+aiogram==2.18
+
