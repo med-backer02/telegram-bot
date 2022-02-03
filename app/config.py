@@ -7,7 +7,7 @@ user=os.getenv('USER_DB')
 password=os.getenv('PASSWORD_OF_DB')
 #host=os.getenv('DATABASE_URL')
 host = os.getenv('HOST_OF_DB')
-
+DB_URI = os.getenv('DB_URI')
 strings={
     "start_hi":"👋 Привет! Меня зовут Kakashi. Я помогу вам с тестами!\n",
     "btn_help":"❔ Помощь",
