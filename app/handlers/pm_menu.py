@@ -127,6 +127,7 @@ async def to_accept_count_(event, **kwargs):
     Users[user_id].count_answers = len(Users[user_id].questions)
 
     first_question = questions[0]
+    text=first_question.text.ljust(90,fillchar=" ")
     next_i = 1
     markup = InlineKeyboardMarkup()
     shuffle_options = first_question.answers
@@ -137,7 +138,7 @@ async def to_accept_count_(event, **kwargs):
         markup.add(
             InlineKeyboardButton(option, callback_data=question_cb.new(next_i, right_, option_id))
         )
-    await event.message.edit_text(first_question.text, reply_markup=markup)
+    await event.message.edit_text(text, reply_markup=markup)
     await event.answer()
 
 
@@ -180,6 +181,7 @@ async def btn_response(event, **kwargs):
 
     else:
         question = Users[user_id].questions[next_i]
+        text = question.text.ljust(90, fillchar=" ")
         markup = InlineKeyboardMarkup()
         shuffle_options = question.answers
         random.shuffle(shuffle_options)
@@ -189,7 +191,7 @@ async def btn_response(event, **kwargs):
             markup.add(
                 InlineKeyboardButton(option, callback_data=question_cb.new(next_i+1, right_, option_id))
             )
-        await event.message.edit_text(question.text, reply_markup=markup)
+        await event.message.edit_text(text, reply_markup=markup)
         await event.answer()
 
 
