@@ -127,7 +127,7 @@ async def to_accept_count_(event, **kwargs):
     Users[user_id].count_answers = len(Users[user_id].questions)
 
     first_question = questions[0]
-    text=first_question.text.ljust(90, "⁣")
+    text=first_question.text.ljust(90, " ")+"HI"
     next_i = 1
     markup = InlineKeyboardMarkup()
     shuffle_options = first_question.answers
@@ -181,7 +181,7 @@ async def btn_response(event, **kwargs):
 
     else:
         question = Users[user_id].questions[next_i]
-        text = question.text.ljust(90, "⁣")
+        text = question.text.ljust(90, " ")+"HI"
         markup = InlineKeyboardMarkup()
         shuffle_options = question.answers
         random.shuffle(shuffle_options)
