@@ -2,15 +2,17 @@ class Question:
 
     def __init__(self, test_id, q_id, question, answers, correct):
 
-        if isinstance(answers, str):
-            self.answers = list(answers[1:-1].split('","'))
-            for i, answer in enumerate(self.answers):
-                self.answers[i] = answer[:].strip('"')
-                self.answers[i] = self.answers[i][:].strip("'")
-        else:
-            self.answers = answers
-        self.correct = correct[:].strip('"')
-        self.correct = self.correct[:].strip("'")
+        # if isinstance(answers, str):
+        #     self.answers = list(answers[1:-1].split('","'))
+        #     for i, answer in enumerate(self.answers):
+        #         self.answers[i] = answer[:].strip('"')
+        #         self.answers[i] = self.answers[i][:].strip("'")
+        # else:
+        #     self.answers = answers
+        # self.correct = correct[:].strip('"')
+        # self.correct = self.correct[:].strip("'")
+        self.answers=answers
+        self.correct= correct
 
         self.test_id = test_id
         self.q_id = q_id
