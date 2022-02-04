@@ -13,11 +13,6 @@ class Psycho:
         self.cursor = self.connection.cursor()
 
     def create_bd_for_tests(self):
-        # self.cursor.execute("""CREATE TABLE IF NOT EXISTS Tests(
-        #                                     id SERIAL PRIMARY KEY,
-        #                                     name VARCHAR(255) NOT NULL,
-        #                                     file_id BIGINT NOT NULL
-        #                                     );""")
         self.cursor.execute("""CREATE TABLE IF NOT EXISTS Tests(
                                                 id SERIAL PRIMARY KEY,
                                                 name VARCHAR(255) NOT NULL UNIQUE

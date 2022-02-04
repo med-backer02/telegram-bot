@@ -1,16 +1,9 @@
-# from aiogram.dispatcher import FSMContext
-# from aiogram.dispatcher.filters.state import State, StatesGroup
-#
-# class Question_states(StatesGroup):
-#     send_answer = State()
-
-
 class Question:
 
     def __init__(self, test_id, q_id, question, answers, correct):
 
         if isinstance(answers, str):
-            self.answers = list(answers[1:-1].split(","))
+            self.answers = list(answers[1:-1].split('","'))
             for i, answer in enumerate(self.answers):
                 self.answers[i] = answer[:].strip('"')
                 self.answers[i] = self.answers[i][:].strip("'")
