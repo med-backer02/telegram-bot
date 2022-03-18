@@ -164,7 +164,7 @@ async def btn_response(event, **kwargs):
             InlineKeyboardButton("« " + strings["tests"], callback_data="get_tests")
         )
 
-        percent = round(Users[user_id].count_answers/100*Users[user_id].number_of_correct_answers*100, 2)
+        percent = round(100/Users[user_id].count_answers*Users[user_id].number_of_correct_answers, 2)
         text = [f"🏁 Тест «{Users[user_id].test_name}» закончен!",
                f"",
                f"Вы ответили на {Users[user_id].count_answers} вопрос",
