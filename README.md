@@ -10,4 +10,4 @@ Then it processes answers and displays test results.
 
 
 
-![video_](https://github.com/med-backer02/telegram-bot/blob/master/VID-20221027-WA0009.gif)
+![video_](https://github.com/med-backer02/telegram-bot/blob/master/telegrambot.gif)
